@@ -1,5 +1,23 @@
 const cocktails = require('../data/cocktails');
 
+function getCocktail(req, res) {
+  const id = req.query.id;
+
+  if (!req.query.id) {
+    res.status(400).json({ message: 'id parameter not provided' });
+    return;
+  }
+
+  const cocktail = cocktails.find((cocktail) => cocktail.id === id);
+
+  if (cocktail === undefined) {
+    res.status(404).json({ message: 'cocktail not found' });
+    return;
+  }
+
+  res.send(cocktail);
+}
+
 const keys = ['id', 'img', 'level', 'name', 'taste'];
 
 function getCocktails(req, res) {
@@ -16,4 +34,4 @@ function getCocktails(req, res) {
   res.send(summarized);
 }
 
-module.exports = { getCocktails };
+module.exports = { getCocktail, getCocktails };
