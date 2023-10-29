@@ -3,7 +3,7 @@ const cocktails = require('../data/cocktails');
 function getCocktail(req, res) {
   const id = req.query.id;
 
-  if (!req.query.id) {
+  if (!id) {
     res.status(400).json({ message: 'id parameter not provided' });
     return;
   }
