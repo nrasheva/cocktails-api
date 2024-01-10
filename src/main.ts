@@ -9,6 +9,8 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
 
+  app.enableCors();
+
   const cocktailsService = app.get(CocktailsService);
 
   await cocktailsService.initializeData();
