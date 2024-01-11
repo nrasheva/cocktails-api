@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, NotFoundException, Post, Query } from '@nestjs/common';
 
 import { CreateCocktailDto } from './cocktails.dto';
 import { CocktailsService } from './cocktails.service';
@@ -17,5 +17,14 @@ export class CocktailsController {
   @Get()
   async getCocktails(): Promise<Cocktail[]> {
     return this.cocktailsService.findAll();
+  }
+
+  @Get('details')
+  async getCocktail(@Query('id') id: string) {
+    const cocktail = await this.cocktailsService.findById(id);
+    if (!cocktail) {
+      throw new NotFoundException(`Cocktail with ID ${id} not found`);
+    }
+    return cocktail;
   }
 }
