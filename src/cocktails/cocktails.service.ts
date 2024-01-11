@@ -35,4 +35,8 @@ export class CocktailsService {
       }
     }
   }
+
+  async findById(id: string): Promise<Cocktail | null> {
+    return this.cocktailModel.findById(id).exec();
+  }
 }
