@@ -39,4 +39,16 @@ export class CocktailsService {
   async findById(id: string): Promise<Cocktail | null> {
     return this.cocktailModel.findById(id).exec();
   }
+
+  async findByIdAndUpdate(id: string, data: any): Promise<any> {
+    try {
+      const updatedData = await this.cocktailModel.findByIdAndUpdate(id, data, { new: true }).exec();
+      if (!updatedData) {
+        throw new Error('Document not found');
+      }
+      return updatedData;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
