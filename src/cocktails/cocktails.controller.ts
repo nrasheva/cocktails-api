@@ -1,4 +1,15 @@
-import { Body, Controller, Get, HttpException, HttpStatus, NotFoundException, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpException,
+  HttpStatus,
+  NotFoundException,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 
 import { CreateCocktailDto, UpdateCocktailDto } from './cocktails.dto';
 import { CocktailsService } from './cocktails.service';
@@ -38,6 +49,19 @@ export class CocktailsController {
       return updatedCocktail;
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @Delete('delete')
+  async remove(@Query('id') id: string) {
+    try {
+      const deletedCocktail = await this.cocktailsService.findOneAndDelete(id);
+      if (!deletedCocktail) {
+        throw new NotFoundException(`Cocktail with ID ${id} not found`);
+      }
+      return deletedCocktail;
+    } catch (error) {
+      console.log(error);
     }
   }
 }
