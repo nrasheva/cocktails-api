@@ -44,9 +44,21 @@ export class CocktailsService {
     try {
       const updatedData = await this.cocktailModel.findByIdAndUpdate(id, data, { new: true }).exec();
       if (!updatedData) {
-        throw new Error('Document not found');
+        throw new Error('Cocktail not found');
       }
       return updatedData;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async findOneAndDelete(id: string): Promise<any> {
+    try {
+      const deletedData = await this.cocktailModel.findOneAndDelete({ _id: id }).exec();
+      if (!deletedData) {
+        throw new Error('Cocktail not found');
+      }
+      return deletedData;
     } catch (error) {
       console.log(error);
     }
