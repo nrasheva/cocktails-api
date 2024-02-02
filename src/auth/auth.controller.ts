@@ -17,4 +17,9 @@ export class AuthController {
   signIn(@Body() body: signInDto): Promise<any> {
     return this.authService.signIn(body.email, body.password);
   }
+
+  @Post('logout')
+  async logout(): Promise<{ message: string }> {
+    return { message: 'Logged out successfully' };
+  }
 }
