@@ -9,7 +9,13 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
 } from '@nestjs/common';
+
+import { AuthGuard } from 'src/auth/auth.guard';
+import { Role } from 'src/constants/role.enum';
+import { Roles } from 'src/constants/roles.decorator';
+import { RolesGuard } from 'src/constants/roles.guard';
 
 import { CreateCocktailDto, UpdateCocktailDto } from './cocktails.dto';
 import { CocktailsService } from './cocktails.service';
@@ -21,6 +27,8 @@ export class CocktailsController {
   constructor(private readonly cocktailsService: CocktailsService) {}
 
   @Post()
+  @UseGuards(AuthGuard, RolesGuard)
+  @Roles(Role.Admin)
   async createCocktail(@Body() body: CreateCocktailDto): Promise<void> {
     return this.cocktailsService.create(body);
   }
@@ -40,6 +48,8 @@ export class CocktailsController {
   }
 
   @Put('edit')
+  @UseGuards(AuthGuard, RolesGuard)
+  @Roles(Role.Admin)
   async update(@Query('id') id: string, @Body() updateCocktailDto: UpdateCocktailDto) {
     try {
       const updatedCocktail = await this.cocktailsService.findByIdAndUpdate(id, updateCocktailDto);
@@ -53,6 +63,8 @@ export class CocktailsController {
   }
 
   @Delete('delete')
+  @UseGuards(AuthGuard, RolesGuard)
+  @Roles(Role.Admin)
   async remove(@Query('id') id: string) {
     try {
       const deletedCocktail = await this.cocktailsService.findOneAndDelete(id);
