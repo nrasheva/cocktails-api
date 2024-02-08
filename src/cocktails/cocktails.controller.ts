@@ -47,7 +47,7 @@ export class CocktailsController {
     return cocktail;
   }
 
-  @Put('edit')
+  @Put()
   @UseGuards(AuthGuard, RolesGuard)
   @Roles(Role.Admin)
   async update(@Query('id') id: string, @Body() updateCocktailDto: UpdateCocktailDto) {
