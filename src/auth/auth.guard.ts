@@ -25,8 +25,8 @@ export class AuthGuard implements CanActivate {
       });
 
       const user = await this.usersService.findOne(payload.email);
-      if (!user) {
-        throw new UnauthorizedException();
+      if (!user || user.role !== 'admin') {
+        throw new UnauthorizedException('User is not authorized or not an admin');
       }
       // 💡 We're assigning the payload to the request object here
       // so that we can access it in our route handlers
