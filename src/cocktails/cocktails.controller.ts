@@ -62,7 +62,7 @@ export class CocktailsController {
     }
   }
 
-  @Delete('delete')
+  @Delete()
   @UseGuards(AuthGuard, RolesGuard)
   @Roles(Role.Admin)
   async remove(@Query('id') id: string) {
