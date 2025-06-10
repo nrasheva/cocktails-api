@@ -3,12 +3,12 @@ export const COCKTAILS_DATA = [
     id: 'd38238ec-d26b-4cc0-a3c5-9a00fbc34d58',
     name: 'A Quiet Cocktail',
     description: 'Inspired by the 2018 film A Quiet Place.',
-    img: 'https://vui.unsplash.com/resize?height=256&quality=60&type=auto&url=https%3A%2F%2Fsearched-images.s3.us-west-2.amazonaws.com%2F550d899c-a7f0-4af9-8d85-c2df070cd2ea%3Fx-amz-checksum-mode%3DENABLED%26X-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQ4GRIA4Q4QHSYODJ%252F20250422%252Fus-west-2%252Fs3%252Faws4_request%26X-Amz-Date%3D20250422T074847Z%26X-Amz-Expires%3D86400%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D6ce99f606150b1683c1be16e1101664e63a7167f52ce20161e4960fc6857d3f0&sign=VcC8zarZZKOMWaPlXCaHA03-JA3QQrBA0Sp-IFt3O8o',
+    img: 'https://images.unsplash.com/photo-1609951651556-5334e2706168?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     ingredients: [
-      ['Triple Sec Orange Liqueur', '20 ml'],
-      ['Dry vermouth', '20 ml'],
-      ['Sweet vermouth', '20 ml'],
-      ['Gin', '20 ml'],
+      { name: 'Triple Sec Orange Liqueur', quantity: '20 ml' },
+      { name: 'Dry vermouth', quantity: '20 ml' },
+      { name: 'Sweet vermouth', quantity: '20 ml' },
+      { name: 'Gin', quantity: '20 ml' },
     ],
     recipe: [
       'Stir ingredients in a mixing glass with ice.',
@@ -22,13 +22,13 @@ export const COCKTAILS_DATA = [
     id: '907e74b7-8d0b-4259-bbf0-f5974d3554dd',
     name: 'A Royale with Rum',
     description: 'This yummy milkshake twist is the perfect sweet treat…',
-    img: 'https://vui.unsplash.com/resize?height=256&quality=60&type=auto&url=https%3A%2F%2Fsearched-images.s3.us-west-2.amazonaws.com%2Fa5af1a0d-19ae-4fcd-9930-0a853a36886b%3Fx-amz-checksum-mode%3DENABLED%26X-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQ4GRIA4Q4QHSYODJ%252F20250422%252Fus-west-2%252Fs3%252Faws4_request%26X-Amz-Date%3D20250422T075233Z%26X-Amz-Expires%3D86400%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D1a665e255de7afdefc449b5378913bed88fe5223c7577b84a27f1829dba60fa0&sign=PygQ2_oBWe7TAeboQVutQkysrFyN-V4Maqw_Z_wIVmQ',
+    img: 'https://images.unsplash.com/photo-1592284441902-bd5fde3e6f87?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     ingredients: [
-      ['Almond Butter', '1 scoop(s)'],
-      ['Triple Sec Orange Liqueur', '30 ml'],
-      ['Milk', '120 ml'],
-      ['Black rum', '60 ml'],
-      ['Vanilla Ice Cream', '3 scoop(s)'],
+      { name: 'Almond Butter', quantity: '1 scoop(s)' },
+      { name: 'Triple Sec Orange Liqueur', quantity: '30 ml' },
+      { name: 'Milk', quantity: '120 ml' },
+      { name: 'Black rum', quantity: '60 ml' },
+      { name: 'Vanilla Ice Cream', quantity: '3 scoop(s)' },
     ],
     recipe: ['Add all ingredients to a high-powered blender and blend to combine.', 'Garnish with an orange peel'],
     taste: 'Creamy',
@@ -40,11 +40,11 @@ export const COCKTAILS_DATA = [
     name: 'After Dinner Special',
     description:
       'This cocktail used to be a pousse-café, to be drank layer after layer. But its orange and herbal notes work well when stirred, and served over ice.',
-    img: 'https://vui.unsplash.com/resize?height=256&quality=60&type=auto&url=https%3A%2F%2Fsearched-images.s3.us-west-2.amazonaws.com%2Fd847135a-9144-40dd-8b6a-8c112ebd4e47%3Fx-amz-checksum-mode%3DENABLED%26X-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQ4GRIA4Q4QHSYODJ%252F20250422%252Fus-west-2%252Fs3%252Faws4_request%26X-Amz-Date%3D20250422T075142Z%26X-Amz-Expires%3D86400%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3Dc749c257bad14ffec4f2c9d79e29ca7211f56c338a3eea6689567f3e19257475&sign=e1CYI-Z1s1cHoEWupwmDk1_03mk-cVozrLAT8q_yPM8',
+    img: 'https://images.unsplash.com/photo-1527762055594-4956c0c8c617?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     ingredients: [
-      ['Benedictine', '30 ml'],
-      ['Triple Sec Orange Liqueur', '30 ml'],
-      ['MilkYellow Chartreuse', '30 ml'],
+      { name: 'Benedictine', quantity: '30 ml' },
+      { name: 'Triple Sec Orange Liqueur', quantity: '30 ml' },
+      { name: 'MilkYellow Chartreuse', quantity: '30 ml' },
     ],
     recipe: [
       'Combine all ingredients in a chilled mixing glass',
@@ -61,12 +61,12 @@ export const COCKTAILS_DATA = [
     name: 'Berry Margarita',
     description:
       'Perfect for the fall season when berries are at their ripest. It produces a beautiful and bright pink color that is seducing even the most shy amateurs',
-    img: 'https://vui.unsplash.com/resize?height=256&quality=60&type=auto&url=https%3A%2F%2Fsearched-images.s3.us-west-2.amazonaws.com%2Fb06ad36c-c392-4a66-8258-5c01427563f6%3Fx-amz-checksum-mode%3DENABLED%26X-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQ4GRIA4Q4QHSYODJ%252F20250422%252Fus-west-2%252Fs3%252Faws4_request%26X-Amz-Date%3D20250422T075501Z%26X-Amz-Expires%3D86400%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D636c0785b35a0adee69acada966a28b46b89496202e756a37b6a2220cbd272ab&sign=hjTjGSY2d2J_H4gLp_YcEzjt8Xn8cdNWS0bw3oQ3K5c',
+    img: 'https://images.unsplash.com/photo-1563223771-5fe4038fbfc9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     ingredients: [
-      ['Blanco tequila', '45 ml'],
-      ['Triple Sec Orange Liqueur', '30 ml'],
-      ['Fresh blackberries', '4 unit'],
-      ['Fresh lime juice', '20 ml'],
+      { name: 'Blanco tequila', quantity: '45 ml' },
+      { name: 'Triple Sec Orange Liqueur', quantity: '30 ml' },
+      { name: 'Fresh blackberries', quantity: '4 unit' },
+      { name: 'Fresh lime juice', quantity: '20 ml' },
     ],
     recipe: [
       'Combine all ingredients in a cocktail shaker',
@@ -83,12 +83,12 @@ export const COCKTAILS_DATA = [
     name: 'Atlas',
     description:
       'This American concoction was published in Chicago in 1937, it has a unique blend of fruits and light woody notes.',
-    img: 'https://vui.unsplash.com/resize?height=256&quality=60&type=auto&url=https%3A%2F%2Fsearched-images.s3.us-west-2.amazonaws.com%2F7ef808b4-3801-4ab5-9dd1-4e9f903885c9%3Fx-amz-checksum-mode%3DENABLED%26X-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQ4GRIA4Q4QHSYODJ%252F20250422%252Fus-west-2%252Fs3%252Faws4_request%26X-Amz-Date%3D20250422T075259Z%26X-Amz-Expires%3D86400%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D2d6c7fc2006afebaddf6d3746e853ab3685bbeb3aaab8319030f1e915f961758&sign=PYVTfvrbZeGeaiY1PtpDjEpgL6H-MxI0axYwWS5TKiI',
+    img: 'https://images.unsplash.com/photo-1602835124432-0ca2d2e66183?q=80&w=1930&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     ingredients: [
-      ['Angostura Bitters', '1 dash(es)'],
-      ['Triple Sec Orange Liqueur', '20 ml'],
-      ['Calvados', '45 ml'],
-      ['Rum', '20 ml'],
+      { name: 'Angostura Bitters', quantity: '1 dash(es)' },
+      { name: 'Triple Sec Orange Liqueur', quantity: '20 ml' },
+      { name: 'Calvados', quantity: '45 ml' },
+      { name: 'Rum', quantity: '20 ml' },
     ],
     recipe: [
       'Combine all ingredients in a chilled mixing glass',
@@ -103,15 +103,14 @@ export const COCKTAILS_DATA = [
   {
     id: '4ab185c9-dd35-4557-ae65-7fc4eb53982d',
     name: 'Blue Bird',
-    description:
-      'Blue Bird was a land speed record that inspired two great bartenders to created a cocktail. Frank Meier from Ritz Hotel Paris in 1936, and William Tarling from the Café Royal Hotel in London in 1937.',
-    img: 'https://vui.unsplash.com/resize?height=256&quality=60&type=auto&url=https%3A%2F%2Fsearched-images.s3.us-west-2.amazonaws.com%2Fdaacdf0e-8c15-48a5-a83f-0fc392d00e40%3Fx-amz-checksum-mode%3DENABLED%26X-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQ4GRIA4Q4QHSYODJ%252F20250422%252Fus-west-2%252Fs3%252Faws4_request%26X-Amz-Date%3D20250422T075534Z%26X-Amz-Expires%3D86400%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D883548c24496b9f8baf9c28f564630c56b794c39846a4403f20fc259342141ae&sign=G84v8dmH_Yn3pFYUB79YPk_2Tpe8Xv3Y3nG2FqDVjqI',
+    description: 'Blue Bird was a land speed record that inspired two great bartenders to created a cocktail...',
+    img: 'https://images.unsplash.com/photo-1587888559483-c16e80d8dded?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     ingredients: [
-      ['Blue food coloring', '3 dash(es)'],
-      ['Triple Sec Orange Liqueur', '20 ml'],
-      ['Fresh lemon juice', '15 ml'],
-      ['Maraschino', '3 dash(es)'],
-      ['Vodka', '50 ml'],
+      { name: 'Blue food coloring', quantity: '3 dash(es)' },
+      { name: 'Triple Sec Orange Liqueur', quantity: '20 ml' },
+      { name: 'Fresh lemon juice', quantity: '15 ml' },
+      { name: 'Maraschino', quantity: '3 dash(es)' },
+      { name: 'Vodka', quantity: '50 ml' },
     ],
     recipe: [
       'Combine all ingredients in a cocktail shaker',
@@ -125,14 +124,13 @@ export const COCKTAILS_DATA = [
   {
     id: '8e5852ef-f7bc-4c30-8455-35a74e42923e',
     name: 'Breakfast Martini',
-    description:
-      'Invented in 1997 by the internationally acclaimed bartender Salvatore Calabrese, this clever Cointreau cocktail uses one of the breakfast most iconic ingredient: orange marmalade.',
-    img: 'https://vui.unsplash.com/resize?height=256&quality=60&type=auto&url=https%3A%2F%2Fsearched-images.s3.us-west-2.amazonaws.com%2F00b7c439-90cd-45cf-9a4b-048e2a15edec%3Fx-amz-checksum-mode%3DENABLED%26X-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQ4GRIA4Q4QHSYODJ%252F20250422%252Fus-west-2%252Fs3%252Faws4_request%26X-Amz-Date%3D20250422T075556Z%26X-Amz-Expires%3D86400%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D8e374a332ed26a54f2a113bbde3d797d16d0b8640c692124c30ce7064f027d1e&sign=ACeOcmCv321ckxDX2Xv9fDVVoB4jUcMEsD2YwPS1Q7o',
+    description: 'Invented in 1997 by the internationally acclaimed bartender Salvatore Calabrese...',
+    img: 'https://images.unsplash.com/photo-1648231838668-cb196c88f2a5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     ingredients: [
-      ['Triple Sec Orange Liqueur', '15 ml'],
-      ['Fresh lemon juice', '15 ml'],
-      ['Orange marmalade', '1 Tbsp(s)'],
-      ['Gin', '50 ml'],
+      { name: 'Triple Sec Orange Liqueur', quantity: '15 ml' },
+      { name: 'Fresh lemon juice', quantity: '15 ml' },
+      { name: 'Orange marmalade', quantity: '1 Tbsp(s)' },
+      { name: 'Gin', quantity: '50 ml' },
     ],
     recipe: [
       'Combine all ingredients in a cocktail shaker',
@@ -147,13 +145,12 @@ export const COCKTAILS_DATA = [
   {
     id: '8bc806ad-e08c-4e52-b8a0-2a1a78122757',
     name: 'Coffee Merger',
-    description:
-      'A tasty and refreshing coffee based cocktail. This cocktail was known as Black Jack during the American prohibition and was served with a sugar rim.',
-    img: 'https://vui.unsplash.com/resize?height=256&quality=60&type=auto&url=https%3A%2F%2Fsearched-images.s3.us-west-2.amazonaws.com%2F56c21aac-91a1-4542-8877-cfb51cc10e87%3Fx-amz-checksum-mode%3DENABLED%26X-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQ4GRIA4Q4QHSYODJ%252F20250422%252Fus-west-2%252Fs3%252Faws4_request%26X-Amz-Date%3D20250422T075614Z%26X-Amz-Expires%3D86400%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3Df825fceccf24f8a4479f3a965a836aaf5f8e2ea3b3760aa5245ca16ce3c5c61a&sign=KHEP5MbC6JafYsGLTaRobYiGmg-NUtPE91PTznpgJtA',
+    description: 'A tasty and refreshing coffee based cocktail...',
+    img: 'http://images.unsplash.com/photo-1619503569646-50b2154078ac?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     ingredients: [
-      ['Triple Sec Orange Liqueur', '25 ml'],
-      ['Espresso', '25 ml'],
-      ['liquor', '30 ml'],
+      { name: 'Triple Sec Orange Liqueur', quantity: '25 ml' },
+      { name: 'Espresso', quantity: '25 ml' },
+      { name: 'liquor', quantity: '30 ml' },
     ],
     recipe: [
       'Combine all ingredients in a cocktail shaker',
