@@ -1,4 +1,13 @@
-import { IsAlpha, IsArray, IsString, IsUrl } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsAlpha, IsArray, IsString, IsUrl, ValidateNested } from 'class-validator';
+
+class IngredientDto {
+  @IsString()
+  name: string;
+
+  @IsString()
+  quantity: string;
+}
 
 export class CreateCocktailDto {
   @IsString()
@@ -11,7 +20,9 @@ export class CreateCocktailDto {
   img: string;
 
   @IsArray()
-  ingredients: string[][];
+  @ValidateNested({ each: true })
+  @Type(() => IngredientDto)
+  ingredients: IngredientDto[];
 
   @IsArray()
   @IsString({ each: true })
