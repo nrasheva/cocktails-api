@@ -3,7 +3,7 @@ import { HydratedDocument } from 'mongoose';
 
 export type CocktailDocument = HydratedDocument<Cocktail>;
 
-class Ingredient {
+export class Ingredient {
   @Prop({ required: true })
   name: string;
 
@@ -11,7 +11,7 @@ class Ingredient {
   quantity: string;
 }
 
-class RecipeStep {
+export class RecipeStep {
   @Prop({ required: true })
   stepNumber: string;
 
