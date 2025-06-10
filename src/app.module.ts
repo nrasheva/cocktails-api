@@ -8,7 +8,7 @@ import { CocktailsModule } from './cocktails/cocktails.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [CocktailsModule, MongooseModule.forRoot('mongodb://localhost:27017/cocktails'), AuthModule, UsersModule],
+  imports: [CocktailsModule, MongooseModule.forRoot('mongodb://127.0.0.1:27017/cocktails'), AuthModule, UsersModule],
   controllers: [AppController],
   providers: [AppService],
 })
