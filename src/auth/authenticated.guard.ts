@@ -7,7 +7,7 @@ import { UsersService } from 'src/users/users.service';
 import { jwtConstants } from './constants';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthenticatedGuard implements CanActivate {
   constructor(
     private jwtService: JwtService,
     private usersService: UsersService,
@@ -17,25 +17,24 @@ export class AuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
     if (!token) {
-      throw new UnauthorizedException();
-      // return true;
+      throw new UnauthorizedException('Authentication required');
     }
+
     try {
       const payload = await this.jwtService.verifyAsync(token, {
         secret: jwtConstants.secret,
       });
 
       const user = await this.usersService.findOne(payload.email);
-      if (!user || !user.roles.includes('admin')) {
-        throw new UnauthorizedException('User is not authorized or not an admin');
+      if (!user) {
+        throw new UnauthorizedException('User not found');
       }
-      // 💡 We're assigning the payload to the request object here
-      // so that we can access it in our route handlers
+
       request['user'] = user;
+      return true;
     } catch {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('Invalid token');
     }
-    return true;
   }
 
   private extractTokenFromHeader(request: Request): string | undefined {
