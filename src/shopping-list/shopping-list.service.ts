@@ -19,7 +19,11 @@ export class ShoppingListService {
     return user.shoppingList as unknown as Cocktail[];
   }
 
-  async addToShoppingList(userId: string, cocktailId: string, ingredientId: string): Promise<void> {
+  async addToShoppingList(
+    userId: string,
+    cocktailId: string,
+    ingredientId: string,
+  ): Promise<{ message: string; ingredient: any }> {
     // Find the cocktail by cocktailId
     const cocktail = await this.cocktailModel.findById(cocktailId);
 
@@ -56,6 +60,11 @@ export class ShoppingListService {
         },
       },
     });
+
+    return {
+      message: `${ingredient.name} added to your shopping list!`,
+      ingredient,
+    };
   }
 
   async removeFromShoppingList(userId: string, ingredientId: string): Promise<void> {
