@@ -20,8 +20,8 @@ export class ShoppingListController {
     return this.shoppingListService.addToShoppingList(req.user.id, body.cocktailId, body.ingredientId);
   }
 
-  @Delete(':ingredientId')
-  remove(@Param('ingredientId') ingredientId: string, @Req() req: CustomRequest) {
-    return this.shoppingListService.removeFromShoppingList(req.user.id, ingredientId);
+  @Delete(':ingredientName')
+  remove(@Param('ingredientName') ingredientName: string, @Req() req: CustomRequest) {
+    return this.shoppingListService.removeFromShoppingList(req.user.id, ingredientName);
   }
 }
