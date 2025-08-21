@@ -1,6 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 
+export interface ShoppingListItem {
+  ingredientId: string;
+  name: string;
+  quantity: string;
+  purchased: boolean;
+}
+
 @Schema()
 export class User extends Document {
   [x: string]: any;
@@ -16,14 +23,8 @@ export class User extends Document {
   @Prop({ type: [{ type: Types.ObjectId, ref: 'Cocktail' }] })
   favorites: Types.ObjectId[];
 
-  @Prop([
-    {
-      ingredientId: String,
-      name: String,
-      quantity: String,
-    },
-  ])
-  shoppingList: { ingredientId: string; name: string; quantity: string }[];
+  @Prop([{ ingredientId: String, name: String, quantity: String, purchased: { type: Boolean, default: false } }])
+  shoppingList: ShoppingListItem[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
