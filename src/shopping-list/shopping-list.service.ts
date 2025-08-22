@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
@@ -78,15 +78,20 @@ export class ShoppingListService {
     return { message: `Removed from your shopping list!` };
   }
 
-  async togglePurchased(userId: string, ingredientId: string) {
+  async togglePurchased(userId: string, ingredientName: string) {
     const user = await this.userModel.findById(userId);
     if (!user) throw new NotFoundException('User not found');
 
-    const item = user.shoppingList.find((i) => i.ingredientId.toString() === ingredientId);
-    if (!item) throw new NotFoundException('Ingredient not found');
+    const item = user.shoppingList.find((i) => i.name.toString().trim() === ingredientName.trim());
+    if (!item) throw new NotFoundException('Ingredient not found in shopping list');
 
     item.purchased = !item.purchased;
-    await user.save();
+
+    try {
+      await user.save();
+    } catch (error) {
+      throw new InternalServerErrorException('Failed to update shopping list');
+    }
 
     return { message: `Ingredient ${item.name} marked as ${item.purchased ? 'purchased' : 'not purchased'}` };
   }
