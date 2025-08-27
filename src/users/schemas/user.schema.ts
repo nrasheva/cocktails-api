@@ -4,7 +4,6 @@ import { Document, Types } from 'mongoose';
 export interface ShoppingListItem {
   ingredientId: string;
   name: string;
-  quantity: string;
   purchased: boolean;
 }
 
