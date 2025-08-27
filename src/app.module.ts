@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ScheduleModule } from '@nestjs/schedule';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -13,6 +14,7 @@ import { UsersModule } from './users/users.module';
   imports: [
     CocktailsModule,
     MongooseModule.forRoot('mongodb://localhost:27017/cocktails'),
+    ScheduleModule.forRoot(),
     AuthModule,
     UsersModule,
     FavoritesModule,
