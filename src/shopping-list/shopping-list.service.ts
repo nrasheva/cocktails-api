@@ -51,7 +51,6 @@ export class ShoppingListService {
       $push: {
         shoppingList: {
           name: ingredient.name,
-          quantity: ingredient.quantity,
           purchased: false,
         },
       },
