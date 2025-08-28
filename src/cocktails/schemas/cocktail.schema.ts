@@ -21,7 +21,7 @@ export class Ingredient {
 
 @Schema()
 export class Cocktail {
-  @Prop({ required: true, unique: true })
+  @Prop({ unique: true, sparse: true })
   idDrink?: string;
 
   @Prop({ required: true })
