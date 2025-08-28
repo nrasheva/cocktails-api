@@ -5,7 +5,6 @@ import { Cron, CronExpression } from '@nestjs/schedule';
 import { Model } from 'mongoose';
 import { firstValueFrom } from 'rxjs';
 
-import { COCKTAILS_DATA } from './cocktails.data';
 import { CreateCocktailDto } from './cocktails.dto';
 import { Cocktail } from './schemas/cocktail.schema';
 
@@ -32,17 +31,17 @@ export class CocktailsService {
     await this.cocktailModel.insertMany(cocktailsData);
   }
 
-  async initializeData(): Promise<void> {
-    for (const cocktailData of COCKTAILS_DATA) {
-      // Check if a cocktail with the same unique identifier already exists
-      const existingCocktail = await this.cocktailModel.findOne({ name: cocktailData.name }).exec();
+  // async initializeData(): Promise<void> {
+  //   for (const cocktailData of COCKTAILS_DATA) {
+  //     // Check if a cocktail with the same unique identifier already exists
+  //     const existingCocktail = await this.cocktailModel.findOne({ name: cocktailData.name }).exec();
 
-      if (!existingCocktail) {
-        const createdCocktail = new this.cocktailModel(cocktailData);
-        await createdCocktail.save();
-      }
-    }
-  }
+  //     if (!existingCocktail) {
+  //       const createdCocktail = new this.cocktailModel(cocktailData);
+  //       await createdCocktail.save();
+  //     }
+  //   }
+  // }
 
   async findById(id: string): Promise<Cocktail | null> {
     return this.cocktailModel.findById(id).exec();
@@ -75,14 +74,21 @@ export class CocktailsService {
   // API
 
   async initializeFromApi(): Promise<void> {
-    const count = await this.cocktailModel.countDocuments().exec();
-    if (count > 0) {
-      return;
+    try {
+      const count = await this.cocktailModel.countDocuments().exec();
+
+      if (count === 0) {
+        this.logger.log('No cocktails found in DB, fetching from API...');
+        await this.fetchAndSaveAllCocktails();
+      } else {
+        this.logger.log(`Cocktails already in DB: ${count}`);
+      }
+    } catch (error) {
+      this.logger.error('Error checking cocktails collection:', error);
+      this.logger.log('Attempting to fetch cocktails from API anyway...');
+      await this.fetchAndSaveAllCocktails();
     }
-
-    await this.fetchAndSaveAllCocktails();
   }
-
   // Fetch by name
 
   async fetchFromApiByName(name: string): Promise<any> {
@@ -101,7 +107,7 @@ export class CocktailsService {
       if (ingredient) {
         ingredients.push({
           name: ingredient,
-          measure: measure?.trim() ?? '', // remove extra spaces or default to empty string
+          measure: measure?.trim() ?? '',
         });
       }
     }
@@ -130,6 +136,11 @@ export class CocktailsService {
       if (!cocktails) continue;
 
       for (const cocktail of cocktails) {
+        if (!cocktail.idDrink) {
+          this.logger.warn(`Skipping cocktail without idDrink: ${cocktail.strDrink}`);
+          continue;
+        }
+
         const cocktailData: Partial<Cocktail> = {
           idDrink: cocktail.idDrink,
           name: cocktail.strDrink,
