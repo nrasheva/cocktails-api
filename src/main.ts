@@ -18,7 +18,7 @@ async function bootstrap() {
 
   const cocktailsService = app.get(CocktailsService);
 
-  await cocktailsService.initializeData();
+  await cocktailsService.initializeFromApi();
 
   await app.listen(3000);
 }
