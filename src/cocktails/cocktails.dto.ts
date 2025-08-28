@@ -57,7 +57,7 @@ export class CreateCocktailDto {
 
 export class UpdateCocktailDto {
   @IsString()
-  idDrink: string;
+  idDrink?: string;
 
   @IsString()
   name: string;
