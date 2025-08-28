@@ -9,7 +9,7 @@ export type Ingredient = {
 // };
 
 export type Cocktail = {
-  idDrink: string;
+  idDrink?: string;
   name: string;
   category: string;
   alcoholic: string;
