@@ -1,8 +1,13 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import * as nodeCrypto from 'crypto';
 
 import { AppModule } from './app.module';
 import { CocktailsService } from './cocktails/cocktails.service';
+
+(global as any).crypto = {
+  randomUUID: nodeCrypto.randomUUID ? nodeCrypto.randomUUID.bind(nodeCrypto) : undefined,
+};
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -13,7 +18,7 @@ async function bootstrap() {
 
   const cocktailsService = app.get(CocktailsService);
 
-  await cocktailsService.initializeData();
+  await cocktailsService.initializeFromApi();
 
   await app.listen(3000, '0.0.0.0');
 }

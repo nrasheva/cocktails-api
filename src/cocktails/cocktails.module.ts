@@ -1,3 +1,4 @@
+import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
@@ -8,8 +9,8 @@ import { CocktailsService } from './cocktails.service';
 import { Cocktail, CocktailSchema } from './schemas/cocktail.schema';
 
 @Module({
+  imports: [MongooseModule.forFeature([{ name: Cocktail.name, schema: CocktailSchema }]), UsersModule, HttpModule],
   controllers: [CocktailsController],
-  imports: [MongooseModule.forFeature([{ name: Cocktail.name, schema: CocktailSchema }]), UsersModule],
   providers: [CocktailsService],
   exports: [MongooseModule.forFeature([{ name: Cocktail.name, schema: CocktailSchema }])],
 })

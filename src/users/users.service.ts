@@ -29,4 +29,12 @@ export class UsersService {
   async findOne(email: string): Promise<User | null> {
     return this.userModel.findOne({ email }).exec();
   }
+
+  async findById(id: string): Promise<User | null> {
+    return this.userModel.findById(id).exec();
+  }
+
+  async updateRefreshToken(userId: string, refreshToken: string | null): Promise<void> {
+    await this.userModel.findByIdAndUpdate(userId, { refreshToken }).exec();
+  }
 }

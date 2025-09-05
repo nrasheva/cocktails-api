@@ -7,43 +7,58 @@ export class Ingredient {
   @Prop({ required: true })
   name: string;
 
-  @Prop({ required: true })
-  quantity: string;
+  @Prop()
+  measure?: string;
 }
 
-export class RecipeStep {
-  @Prop({ required: true })
-  stepNumber: string;
+// export class RecipeStep {
+//   @Prop({ required: true })
+//   stepNumber: string;
 
-  @Prop({ required: true })
-  instruction: string;
-}
+//   @Prop({ required: true })
+//   instruction: string;
+// }
 
 @Schema()
 export class Cocktail {
+  @Prop({ unique: true, sparse: true })
+  idDrink?: string;
+
   @Prop({ required: true })
   name: string;
 
-  @Prop({ required: true })
-  description: string;
+  @Prop()
+  category: string;
 
-  @Prop({ required: true })
-  img: string;
+  @Prop()
+  alcoholic: string;
+
+  @Prop()
+  glass: string;
+
+  @Prop()
+  instructions: string;
 
   @Prop({ type: [Ingredient], required: true })
   ingredients: Ingredient[];
 
-  @Prop({ type: [RecipeStep], required: true })
-  recipe: RecipeStep[];
+  @Prop()
+  img: string;
 
-  @Prop({ required: true })
-  taste: string;
+  @Prop()
+  thumb: string;
 
-  @Prop({ required: true })
-  time: string;
+  // @Prop({ type: [RecipeStep], required: true })
+  // recipe: RecipeStep[];
 
-  @Prop({ required: true })
-  level: string;
+  // @Prop({ default: '' })
+  // taste: string;
+
+  // @Prop({ default: '' })
+  // level: string;
+
+  // @Prop({ default: '' })
+  // time: string;
 }
 
 export const CocktailSchema = SchemaFactory.createForClass(Cocktail);

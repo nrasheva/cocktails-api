@@ -6,6 +6,7 @@ import {
   HttpException,
   HttpStatus,
   NotFoundException,
+  Param,
   Post,
   Put,
   Query,
@@ -20,7 +21,7 @@ import { RolesGuard } from 'src/constants/roles.guard';
 import { CreateCocktailDto, UpdateCocktailDto } from './cocktails.dto';
 import { CocktailsService } from './cocktails.service';
 
-import type { Cocktail } from './cocktails.types';
+import type { Cocktail } from '../cocktails/schemas/cocktail.schema';
 
 @Controller('cocktails')
 export class CocktailsController {
@@ -75,5 +76,27 @@ export class CocktailsController {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  // API
+
+  @Get('search')
+  async search(@Query('name') name: string) {
+    return this.cocktailsService.fetchFromApiByName(name);
+  }
+
+  @Post('sync-external')
+  async syncCocktails() {
+    await this.cocktailsService.fetchAndSaveAllCocktails();
+    return { message: 'Cocktails synced from TheCocktailDB 🎉' };
+  }
+
+  @Get('external/:cocktailId')
+  async getCocktailById(@Param('cocktailId') id: string) {
+    const cocktail = await this.cocktailsService.fetchCocktailById(id);
+    if (!cocktail) {
+      return { message: `Cocktail with cocktailId ${id} not found` };
+    }
+    return cocktail;
   }
 }
